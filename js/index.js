@@ -1,3 +1,4 @@
+import { create_row } from "./user_operations.js";
 const user = [
   {
     _id: 1,
@@ -160,39 +161,16 @@ const user = [
     address: "903 Newel Street, Clarence, Pennsylvania, 4033",
   },
 ];
-const create_row = (item) => {
-  let row = document.createElement("tr");
-  let id = document.createElement("td");
-  let name = document.createElement("td");
-  let gender = document.createElement("td");
-  let company = document.createElement("td");
-  let email = document.createElement("td");
-  let phone = document.createElement("td");
-  let address = document.createElement("td");
-  // let isActive = document.createElement("td");
 
-  id.innerText = item._id;
-  name.innerText = item.name;
-  gender.innerText = item.gender;
-  company.innerText = item.company;
-  email.innerText = item.email;
-  phone.innerText = item.phone;
-  address.innerText = item.address;
+$(document).ready(function () {
+  const table = document.getElementById("table_body");
 
-  row.appendChild(id);
-  row.appendChild(name);
-  row.appendChild(phone);
-  row.appendChild(email);
-  row.appendChild(company);
-  row.appendChild(address);
-  row.appendChild(gender);
+  function edit_user(id) {
+    console.log(id);
+  }
 
-  return row;
-};
-
-let table = document.getElementById("table_body");
-
-user.forEach((item) => {
-  row = create_row(item);
-  table.appendChild(row);
+  user.forEach((item) => {
+    let row = create_row(item);
+    table.appendChild(row);
+  });
 });

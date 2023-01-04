@@ -66,20 +66,10 @@
               <th scope="col">Company</th>
               <th scope="col">Address</th>
               <th scope="col">Gender</th>
-              <th scope="col" colspan="2">Action</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
-          <tbody class="text-center" id="table_body">
-            <tr>
-              <td>1</td>
-              <td>Alex</td>
-              <td>019435</td>
-              <td>example@gmail.com</td>
-              <td>entertechBd</td>
-              <td>dhaka,BD</td>
-              <td>Male</td>
-            </tr>
-          </tbody>
+          <tbody class="text-center" id="table_body"></tbody>
         </table>
       </div>
       <!-- user data table end  -->
@@ -179,16 +169,16 @@
                     autofocus
                   />
                 </div>
-                <div class="row my-3"></div>
               </div>
-              <button
-                class="btn btn-lg btn-primary btn-block"
-                type="submit"
-                id="submit"
-                name="submit"
-              >
-                Add User
-              </button>
+              <div class="row my-3">
+                <button
+                  class="btn btn-lg btn-primary btn-block"
+                  id="add_user"
+                  onclick="add_user()"
+                >
+                  Add User
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -205,6 +195,12 @@
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/index.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./js/index.js" defer></script>
   </body>
 </html>
