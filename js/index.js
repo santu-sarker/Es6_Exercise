@@ -162,15 +162,14 @@ const user = [
   },
 ];
 
-$(document).ready(function () {
-  const table = document.getElementById("table_body");
+const table = document.getElementById("table_body");
 
-  function edit_user(id) {
-    console.log(id);
-  }
+function edit_user(id) {
+  console.log(id);
+}
 
-  user.forEach((item) => {
-    let row = create_row(item);
-    table.appendChild(row);
-  });
+user.forEach((item) => {
+  let row = create_row(item);
+
+  table.appendChild(row);
 });
