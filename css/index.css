@@ -11,6 +11,10 @@
 .index-navbar {
   background-color: rgb(17, 25, 44) !important;
 }
+
+.table_div {
+  max-height: 80vh;
+}
 .site-footer {
   position: sticky;
   top: 100%;

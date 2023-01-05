@@ -55,7 +55,7 @@
       </nav>
       <!-- Page Navigation Bar End -->
       <!-- user data table  -->
-      <div class="table-responsive">
+      <div class="table-responsive table_div">
         <table class="table table-bordered">
           <thead class="thead-light text-center">
             <tr>
@@ -66,7 +66,8 @@
               <th scope="col">Company</th>
               <th scope="col">Address</th>
               <th scope="col">Gender</th>
-              <th scope="col">Action</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody class="text-center" id="table_body"></tbody>
@@ -85,7 +86,7 @@
     </div>
 
     <!-- main div end  -->
-    <!-- user modal section  -->
+    <!-- add user modal section  -->
     <div
       class="modal fade text-center"
       id="user_modal"
@@ -106,85 +107,215 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form
-              class="form-signin"
-              onsubmit=""
-              method="POST"
-              autocomplete="on"
-            >
-              <div class="card-body justify-content-center">
-                <div class="row">
-                  <input type="hidden" name="user_id" id="user_id" />
+            <div class="card-body justify-content-center">
+              <div class="row">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  class="form-control col-lg-12 col-md-12 col-sm-12 col-12"
+                  placeholder="Enter user Name"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="form-control col-12"
+                  placeholder="Enter user Email Address"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="string"
+                  name="phone"
+                  id="phone"
+                  class="form-control col-12"
+                  placeholder="Enter Contact Number"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="text"
+                  name="company"
+                  id="company"
+                  class="form-control col-12"
+                  placeholder="Enter company Name"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  class="form-control col-12"
+                  placeholder="Enter User Address"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <div class="form-check form-check-inline col">
                   <input
-                    type="name"
-                    name="name"
-                    id="name"
-                    class="form-control col-lg-12 col-md-12 col-sm-12 col-12"
-                    placeholder="Enter user Name"
-                    required
-                    autofocus
+                    class="form-check-input gender"
+                    type="radio"
+                    name="gender"
+                    id="male"
+                    value="male"
                   />
+                  <label class="form-check-label" for="male">male</label>
                 </div>
-                <div class="row my-3">
+                <div class="form-check form-check-inline col">
                   <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    class="form-control col-12"
-                    placeholder="Enter user Email Address"
-                    required
-                    autofocus
+                    class="form-check-input gender"
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    value="female"
                   />
-                </div>
-                <div class="row my-3">
-                  <input
-                    type="number"
-                    name="phone"
-                    id="phone"
-                    class="form-control col-12"
-                    placeholder="Enter Contact Number"
-                    required
-                    autofocus
-                  />
-                </div>
-                <div class="row my-3">
-                  <input
-                    type="text"
-                    name="company"
-                    id="company"
-                    class="form-control col-12"
-                    placeholder="Enter company Name"
-                    required
-                    autofocus
-                  />
-                </div>
-                <div class="row my-3">
-                  <input
-                    type="text"
-                    name="address"
-                    id="address"
-                    class="form-control col-12"
-                    placeholder="Enter User Address"
-                    required
-                    autofocus
-                  />
+                  <label class="form-check-label" for="female">female</label>
                 </div>
               </div>
               <div class="row my-3">
                 <button
                   class="btn btn-lg btn-primary btn-block"
-                  id="add_user"
-                  onclick="add_user()"
+                  id="user_submit"
+                  type="submit"
                 >
                   Add User
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <!-- user modal end  -->
+    <!-- edit user modal section  -->
+    <div
+      class="modal fade text-center"
+      id="edit_modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card-body justify-content-center">
+              <!-- for edit id hidden input field -->
+              <input type="hidden" name="edit_id" id="edit_id" />
+              <div class="row">
+                <input
+                  type="text"
+                  name="edit_name"
+                  id="edit_name"
+                  class="form-control col-lg-12 col-md-12 col-sm-12 col-12"
+                  placeholder="Enter user Name"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="email"
+                  name="edit_email"
+                  id="edit_email"
+                  class="form-control col-12"
+                  placeholder="Enter user Email Address"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="string"
+                  name="edit_phone"
+                  id="edit_phone"
+                  class="form-control col-12"
+                  placeholder="Enter Contact Number"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="text"
+                  name="edit_company"
+                  id="edit_company"
+                  class="form-control col-12"
+                  placeholder="Enter company Name"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <input
+                  type="text"
+                  name="edit_address"
+                  id="edit_address"
+                  class="form-control col-12"
+                  placeholder="Enter User Address"
+                  required
+                  autofocus
+                />
+              </div>
+              <div class="row my-3">
+                <div class="form-check form-check-inline col">
+                  <input
+                    class="form-check-input gender"
+                    type="radio"
+                    name="edit_gender"
+                    id="male"
+                    value="male"
+                  />
+                  <label class="form-check-label" for="male">male</label>
+                </div>
+                <div class="form-check form-check-inline col">
+                  <input
+                    class="form-check-input gender"
+                    type="radio"
+                    name="edit_gender"
+                    id="female"
+                    value="female"
+                  />
+                  <label class="form-check-label" for="female">female</label>
+                </div>
+              </div>
+              <div class="row my-3">
+                <button
+                  class="btn btn-lg btn-warning btn-block"
+                  id="edit_submit"
+                  type="submit"
+                >
+                  Save Change
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- edit modal section end  -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

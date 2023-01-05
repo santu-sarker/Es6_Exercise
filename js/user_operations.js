@@ -21,21 +21,9 @@ export const create_row = (item) => {
   button.innerText = "Edit";
   button.classList.add("btn", "btn-warning");
   button.setAttribute("value", item._id);
-  button.setAttribute("onClick", `edit_user(${item._id})`);
+  button.setAttribute("onClick", `{edit_user(${item._id})}`);
   action.append(button);
 
-  // row.appendChild(id);
-  // row.appendChild(name);
-  // row.appendChild(phone);
-  // row.appendChild(email);
-  // row.appendChild(company);
-  // row.appendChild(address);
-  // row.appendChild(gender);
-  // row.appendChild(action);
   row.append(id, name, gender, company, email, phone, address, action);
   return row;
 };
-
-export function edit_user() {
-  console.log("clicked");
-}
