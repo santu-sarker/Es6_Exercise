@@ -252,7 +252,7 @@ const load_user = (page) => {
   current_position = page * per_page - per_page;
 
   let user_data = user.slice(current_position, current_position + per_page);
-  // console.log(user_data);
+  console.log(user_data);
   user_data.forEach((item) => {
     let row = create_row(item);
 
@@ -398,6 +398,9 @@ edit_buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
     let id = event.target.value;
     let user_data = user[id - 1];
+    console.log(id);
+    // console.log(user_data);
+    edit_modal.show();
     edit_id.value = user_data._id;
     edit_name.value = user_data.name;
     edit_email.value = user_data.email;
@@ -409,7 +412,7 @@ edit_buttons.forEach((button) => {
 //  onclick event for user edit
 edit_submit.addEventListener("click", () => {
   let id = edit_id.value - 1;
-
+  edit_modal.show();
   const gen_value = edit_gender[0].checked
     ? "male"
     : edit_gender[1].checked
