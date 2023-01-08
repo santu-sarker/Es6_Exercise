@@ -309,18 +309,23 @@ paginate_buttons.forEach((btn) => {
 // }
 //  previous page button event
 const prev_btn = document.getElementById("prev_btn");
-prev_btn.addEventListener("click", (event) => {
-  current_page -= 1;
-  load_user(current_page);
 
+prev_btn.addEventListener("click", (event) => {
   let childens = document.querySelectorAll(".paginate_btn");
-  for (let i = 0; i <= childens.length - 1; i++) {
-    // i=0 is prev btn and only 4 items are p
-    //looping through each li and remove active class
-    if (childens[i].parentElement.classList.contains("active")) {
-      childens[i].parentElement.classList.remove("active");
-      childens[i - 1].parentElement.classList.add("active");
-      break;
+  if (current_page == 1) {
+    event.preventDefault();
+  } else {
+    current_page -= 1;
+    load_user(current_page);
+
+    for (let i = 0; i <= childens.length - 1; i++) {
+      // i=0 is prev btn and only 4 items are p
+      //looping through each li and remove active class
+      if (childens[i].parentElement.classList.contains("active")) {
+        childens[i].parentElement.classList.remove("active");
+        childens[i - 1].parentElement.classList.add("active");
+        break;
+      }
     }
   }
 });
@@ -328,23 +333,26 @@ prev_btn.addEventListener("click", (event) => {
 // next page button event
 const next_btn = document.getElementById("next_btn");
 next_btn.addEventListener("click", (event) => {
-  current_page += 1;
-  load_user(current_page);
+  if (current_page == 4) {
+    event.preventDefault();
+  } else {
+    current_page += 1;
+    load_user(current_page);
 
-  // let childens = next_btn.parentElement.parentElement.children;
-  let childens = document.querySelectorAll(".paginate_btn");
-  console.log(childens);
-  for (let i = 0; i <= childens.length - 1; i++) {
-    // i=0 is prev btn and only 4 items are p
-    //looping through each li and remove active class
-    if (childens[i].parentElement.classList.contains("active")) {
-      childens[i].parentElement.classList.remove("active");
-      childens[i + 1].parentElement.classList.add("active");
-      break;
+    // let childens = next_btn.parentElement.parentElement.children;
+    let childens = document.querySelectorAll(".paginate_btn");
+    console.log(childens);
+    for (let i = 0; i <= childens.length - 1; i++) {
+      // i=0 is prev btn and only 4 items are p
+      //looping through each li and remove active class
+      if (childens[i].parentElement.classList.contains("active")) {
+        childens[i].parentElement.classList.remove("active");
+        childens[i + 1].parentElement.classList.add("active");
+        break;
+      }
     }
+    // event.target.classList.add("active");
   }
-  // event.target.classList.add("active");
-  current_page = Number(event.target.value);
 });
 
 // *********** adding new user into user array ***********
