@@ -209,17 +209,142 @@ const create_row = (item) => {
   return row;
 };
 
+// pagination creating function
+const create_pagination = (total_page) => {
+  const paginate_elements = [];
+
+  // creating prev and next btn
+  let prev_li = document.createElement("li");
+  let nxt_li = document.createElement("li");
+  let prev_btn = document.createElement("button");
+  let nxt_btn = document.createElement("button");
+  prev_li.classList.add("page-item", "paginate_prev");
+  prev_btn.classList.add("page-link");
+  prev_btn.setAttribute("id", "prev_btn");
+  prev_btn.innerText = "previous";
+  prev_li.appendChild(prev_btn);
+  paginate_elements.push(prev_li);
+
+  for (let i = 1; i <= total_page; i++) {
+    let node = document.createElement("li");
+    let node_btn = document.createElement("button");
+    node.classList.add("page-item");
+    node_btn.classList.add("page-link", "paginate_btn");
+    i == 1 ? node.classList.add("active") : "";
+    node_btn.setAttribute("value", i);
+    node_btn.innerText = i;
+    node.append(node_btn);
+    paginate_elements.push(node);
+  }
+  nxt_li.classList.add("page-item", "paginate_nxt");
+  nxt_btn.classList.add("page-link");
+  nxt_btn.setAttribute("id", "next_btn");
+  nxt_btn.innerText = "next";
+  nxt_li.appendChild(nxt_btn);
+  paginate_elements.push(nxt_li);
+  return paginate_elements;
+};
+
+const load_user = (page) => {
+  // inserting rows one by one
+  table_body.innerHTML = ""; // removing all child node of table
+  current_position = page * per_page - per_page;
+
+  let user_data = user.slice(current_position, current_position + per_page);
+  user_data.forEach((item) => {
+    let row = create_row(item);
+
+    table_body.appendChild(row);
+  });
+};
+
 //  **************** fetching all user information into table  **************
 
 const table_body = document.getElementById("table_body");
 const modal = new bootstrap.Modal("#user_modal");
 const edit_modal = new bootstrap.Modal("#edit_modal");
 
-// inserting rows one by one
-user.forEach((item) => {
-  let row = create_row(item);
+// adding pagination to the page
+const per_page = 5;
+const total_page = Math.ceil(user.length / per_page);
+let current_position = 0;
+let current_page = 1;
+const paginate_parent = document.getElementById("paginate_parent");
+paginate_parent.append;
+const elements = create_pagination(total_page);
+elements.forEach((item) => {
+  paginate_parent.appendChild(item);
+});
 
-  table_body.appendChild(row);
+// current_position == 1 ? (start = 0) : {start = current_position * 5 - 1  };
+// console.log(start);
+load_user(current_page);
+
+// pagination button click event
+let paginate_buttons = document.querySelectorAll(".paginate_btn");
+paginate_buttons.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    let btn_parent = btn.parentElement.parentElement.children;
+
+    for (let i = 0; i <= btn_parent.length - 1; i++) {
+      //looping through each li and remove active class
+      if (btn_parent[i].classList.contains("active")) {
+        btn_parent[i].classList.remove("active");
+      }
+      btn.parentElement.classList.add("active"); //adding active class  to its parent li
+    }
+    // event.target.classList.add("active");
+    current_page = Number(event.target.value);
+    load_user(current_page);
+  });
+});
+
+// if (current_page == 1) {
+//   // prev_btn.classList.add("disabled");
+//   console.log(prev_btn);
+// } else {
+//   prev_btn.classList.contains("disabled")
+//     ? ""
+//     : prev_btn.classList.add("disabled");
+// }
+//  previous page button event
+const prev_btn = document.getElementById("prev_btn");
+prev_btn.addEventListener("click", (event) => {
+  current_page -= 1;
+  load_user(current_page);
+
+  let childens = document.querySelectorAll(".paginate_btn");
+  for (let i = 0; i <= childens.length - 1; i++) {
+    // i=0 is prev btn and only 4 items are p
+    //looping through each li and remove active class
+    if (childens[i].parentElement.classList.contains("active")) {
+      childens[i].parentElement.classList.remove("active");
+      childens[i - 1].parentElement.classList.add("active");
+      break;
+    }
+  }
+});
+
+// next page button event
+const next_btn = document.getElementById("next_btn");
+next_btn.addEventListener("click", (event) => {
+  current_page += 1;
+  load_user(current_page);
+
+  // let childens = next_btn.parentElement.parentElement.children;
+  let childens = document.querySelectorAll(".paginate_btn");
+  console.log(childens);
+  for (let i = 0; i <= childens.length - 1; i++) {
+    // i=0 is prev btn and only 4 items are p
+    //looping through each li and remove active class
+    if (childens[i].parentElement.classList.contains("active")) {
+      childens[i].parentElement.classList.remove("active");
+      childens[i + 1].parentElement.classList.add("active");
+      break;
+    }
+  }
+  // event.target.classList.add("active");
+  current_page = Number(event.target.value);
 });
 
 // *********** adding new user into user array ***********
@@ -264,7 +389,7 @@ add_user.addEventListener("click", () => {
 
   user.push(data);
   const row = create_row(data);
-  table_body.appendChild(row);
+  table_body.prepend(row);
   modal.hide();
 });
 
