@@ -179,6 +179,7 @@ const create_row = (item) => {
   let delete_btn = document.createElement("button");
 
   id.innerText = item._id;
+  // console.log(item);
   name.innerText = item.name;
   gender.innerText = item.gender;
   company.innerText = item.company;
@@ -251,6 +252,7 @@ const load_user = (page) => {
   current_position = page * per_page - per_page;
 
   let user_data = user.slice(current_position, current_position + per_page);
+  console.log(user_data);
   user_data.forEach((item) => {
     let row = create_row(item);
 
@@ -276,8 +278,6 @@ elements.forEach((item) => {
   paginate_parent.appendChild(item);
 });
 
-// current_position == 1 ? (start = 0) : {start = current_position * 5 - 1  };
-// console.log(start);
 load_user(current_page);
 
 // pagination button click event
@@ -299,19 +299,12 @@ paginate_buttons.forEach((btn) => {
   });
 });
 
-// if (current_page == 1) {
-//   // prev_btn.classList.add("disabled");
-//   console.log(prev_btn);
-// } else {
-//   prev_btn.classList.contains("disabled")
-//     ? ""
-//     : prev_btn.classList.add("disabled");
-// }
 //  previous page button event
 const prev_btn = document.getElementById("prev_btn");
 
 prev_btn.addEventListener("click", (event) => {
   let childens = document.querySelectorAll(".paginate_btn");
+
   if (current_page == 1) {
     event.preventDefault();
   } else {
@@ -319,7 +312,6 @@ prev_btn.addEventListener("click", (event) => {
     load_user(current_page);
 
     for (let i = 0; i <= childens.length - 1; i++) {
-      // i=0 is prev btn and only 4 items are p
       //looping through each li and remove active class
       if (childens[i].parentElement.classList.contains("active")) {
         childens[i].parentElement.classList.remove("active");
@@ -339,9 +331,8 @@ next_btn.addEventListener("click", (event) => {
     current_page += 1;
     load_user(current_page);
 
-    // let childens = next_btn.parentElement.parentElement.children;
     let childens = document.querySelectorAll(".paginate_btn");
-    console.log(childens);
+
     for (let i = 0; i <= childens.length - 1; i++) {
       // i=0 is prev btn and only 4 items are p
       //looping through each li and remove active class
@@ -351,7 +342,6 @@ next_btn.addEventListener("click", (event) => {
         break;
       }
     }
-    // event.target.classList.add("active");
   }
 });
 
@@ -375,7 +365,6 @@ const edit_gender = document.getElementsByName("edit_gender");
 
 //  onclick event for user creation
 add_user.addEventListener("click", () => {
-  // const modal = new bootstrap.Modal("#user_modal");
   const id = user[user.length - 1]._id + 1; // calculating last indexed user id +1
 
   const gen_value = gender[0].checked
@@ -402,21 +391,22 @@ add_user.addEventListener("click", () => {
 });
 
 //  editing user data
-const edit_buttons = document.querySelectorAll(".edit_user");
+let edit_buttons = document.querySelectorAll(".edit_user");
+
 const edit_submit = document.getElementById("edit_submit");
 edit_buttons.forEach((button) => {
   button.addEventListener("click", (event) => {
     let id = event.target.value;
     let user_data = user[id - 1];
-
+    console.log(id);
     // console.log(user_data);
+    // edit_modal.show();
     edit_id.value = user_data._id;
     edit_name.value = user_data.name;
     edit_email.value = user_data.email;
     edit_phone.value = user_data.phone;
     edit_company.value = user_data.company;
     edit_address.value = user_data.address;
-    edit_modal.show();
   });
 });
 //  onclick event for user edit
