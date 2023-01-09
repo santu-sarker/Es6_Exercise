@@ -160,7 +160,7 @@ const user = [
     phone: "+1 (976) 493-2195",
     address: "903 Newel Street, Clarence, Pennsylvania, 4033",
   },
-].reverse();
+];
 
 //  ***************** table row creation function  ******************
 
@@ -250,7 +250,8 @@ const load_user = (page) => {
   table_body.innerHTML = ""; // removing all child node of table
   current_position = page * per_page - per_page;
 
-  let user_data = user.slice(current_position, current_position + per_page);
+  let user_data = user.slice().reverse();
+  user_data = user_data.slice(current_position, current_position + per_page);
 
   // inserting rows one by one into table body
   user_data.forEach((item) => {
@@ -406,7 +407,8 @@ let gender = document.getElementsByName("gender");
 
 // ************* onclick event for user creation *************
 add_user.addEventListener("click", () => {
-  const id = user[user.length - 1]._id + 1; // calculating last indexed user id +1
+  // const id = user[user.length - 1]._id + 1; // calculating last indexed user id +1
+  const id = user.length + 1; // calculating last indexed user id +1
 
   const gen_value = gender[0].checked
     ? "male"
@@ -425,7 +427,8 @@ add_user.addEventListener("click", () => {
     address: address.value,
   };
 
-  user.push(data);
+  let id_no = user.push(data);
+  console.log(user, id);
   load_user(current_page);
 
   //clearing add user form info
