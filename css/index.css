@@ -11,9 +11,23 @@
 .index-navbar {
   background-color: rgb(17, 25, 44) !important;
 }
+.paginate_selectbox h6 {
+  margin-bottom: 0;
+}
+.error_text {
+  color: rgb(197, 19, 55);
+  font-weight: 600;
+}
+.id_div {
+  padding: 0 !important;
+}
 
 .table_div {
-  max-height: 70vh;
+  max-height: 62vh;
+}
+.pagination_m_div {
+  position: sticky;
+  top: 85%;
 }
 .pagination {
   margin-bottom: 0;

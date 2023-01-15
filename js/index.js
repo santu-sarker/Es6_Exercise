@@ -85,7 +85,7 @@ const user = [
     isActive: true,
     name: "Andrea Simon",
     gender: "female",
-    company: "QUORDATE",
+    company: "SPRINGBEE",
     email: "andreasimon@quordate.com",
     phone: "+1 (804) 600-2959",
     address: "397 President Street, Rutherford, Georgia, 971",
@@ -135,7 +135,7 @@ const user = [
     isActive: true,
     name: "Harriet Chaney",
     gender: "female",
-    company: "INTRADISK",
+    company: "VINCH",
     email: "harrietchaney@intradisk.com",
     phone: "+1 (863) 556-2024",
     address: "496 Ocean Parkway, Westerville, Alabama, 7641",
@@ -246,12 +246,13 @@ const create_pagination = (total_page) => {
 };
 
 //  updated load_user
-const load_user = (page) => {
+const load_user = (page = 1, order = "asc") => {
   table_body.innerHTML = ""; // removing all child node of table
   current_position = page * per_page - per_page;
 
-  let user_data = user.slice().reverse();
-  user_data = user_data.slice(current_position, current_position + per_page);
+  let user_data = user.slice(current_position, current_position + per_page);
+  order != "asc" ? (user_data = user.slice().reverse()) : "";
+  // user_data = user_data.slice(current_position, current_position + per_page);
 
   // inserting rows one by one into table body
   user_data.forEach((item) => {
@@ -272,7 +273,7 @@ const load_user = (page) => {
       edit_name.value = user_data.name;
       edit_email.value = user_data.email;
       edit_phone.value = user_data.phone;
-      edit_company.value = user_data.company;
+      // edit_company.value = user_data.company;
       edit_address.value = user_data.address;
       edit_gender[0].value == user_data.gender // here edit_gender[0] == female , edit_gender[1] = male
         ? (edit_gender[0].checked = true) // marking male as checked
@@ -290,6 +291,11 @@ const load_user = (page) => {
       delete_modal.show();
     });
   });
+  const elements = create_pagination(Math.ceil(user.length / per_page));
+  paginate_parent.innerHTML = "";
+  elements.forEach((item) => {
+    paginate_parent.appendChild(item);
+  });
 };
 
 //  **************** fetching all user information into table  **************
@@ -300,12 +306,13 @@ const edit_modal = new bootstrap.Modal("#edit_modal");
 let edit_buttons = document.querySelectorAll(".edit_user");
 
 // adding pagination to the page
-const per_page = 5;
+let per_page = 5;
 const total_page = Math.ceil(user.length / per_page);
+let order = "asc";
 let current_position = 0;
 let current_page = 1;
 const paginate_parent = document.getElementById("paginate_parent");
-paginate_parent.append;
+// paginate_parent.append;
 const elements = create_pagination(total_page);
 elements.forEach((item) => {
   paginate_parent.appendChild(item);
@@ -313,8 +320,19 @@ elements.forEach((item) => {
 
 load_user(current_page);
 
-// pagination button click event
+// pagination selectbox value read event
 let paginate_buttons = document.querySelectorAll(".paginate_btn");
+const paginate_select = document.querySelector(".paginate_select");
+
+paginate_select.addEventListener("change", (event) => {
+  per_page = Number(paginate_select.value);
+  current_page = 1;
+  current_position = 0;
+  load_user(current_page, "asc");
+});
+
+//pagination button click event
+
 paginate_buttons.forEach((btn) => {
   btn.addEventListener("click", (event) => {
     let btn_parent = btn.parentElement.parentElement.children;
@@ -392,7 +410,7 @@ const edit_id = document.getElementById("edit_id");
 const edit_name = document.getElementById("edit_name");
 const edit_email = document.getElementById("edit_email");
 const edit_phone = document.getElementById("edit_phone");
-const edit_company = document.getElementById("edit_company");
+const edit_company = document.querySelector("#select_company");
 const edit_address = document.getElementById("edit_address");
 const edit_gender = document.getElementsByName("edit_gender");
 
@@ -443,6 +461,16 @@ add_user.addEventListener("click", () => {
 });
 
 // ********  editing user data buuton event *******
+// onclick event for company selete menu
+let company_names = user
+  .map((item) => {
+    return item.company;
+  })
+  .reduce((result, current) => {
+    !result.includes(current) ? result.push(current) : false;
+    return result;
+  }, []);
+console.log(company_names);
 
 const edit_submit = document.getElementById("edit_submit");
 edit_buttons.forEach((button) => {
@@ -454,7 +482,20 @@ edit_buttons.forEach((button) => {
     edit_name.value = user_data.name;
     edit_email.value = user_data.email;
     edit_phone.value = user_data.phone;
-    edit_company.value = user_data.company;
+
+    // creating edit company select menu
+    company_names.forEach((item) => {
+      let option = document.createElement("option");
+      option.setAttribute("value", company_names);
+      option.innerHTML = company_names;
+      edit_company.append(option);
+    });
+    edit_company.options.forEach((opt) => {
+      opt.value == user_data.company
+        ? (opt.selected = true)
+        : (opt.selected = false);
+    });
+    // edit_company.value = user_data.company;
     edit_address.value = user_data.address;
     edit_gender[0].value == user_data.gender // here edit_gender[0] == female , edit_gender[1] = male
       ? (edit_gender[0].checked = true) // marking male as checked
@@ -478,7 +519,7 @@ edit_submit.addEventListener("click", (event) => {
     user[index].name = edit_name.value;
     user[index].phone = edit_phone.value;
     user[index].email = edit_email.value;
-    user[index].company = edit_company.value;
+    // user[index].company = edit_company.value;
     user[index].address = edit_address.value;
     user[index].gender = gen_value;
   }
@@ -509,4 +550,29 @@ delete_confirm.addEventListener("click", (event) => {
   }
   load_user(current_page);
   delete_modal.hide();
+});
+
+// ID wise user sorting  event listener
+
+const id_up = document.getElementById("id_up");
+const id_down = document.getElementById("id_down");
+
+id_up.addEventListener("click", () => {
+  id_up.classList.contains("bi-caret-up")
+    ? id_up.classList.replace("bi-caret-up", "bi-caret-up-fill")
+    : "";
+  id_down.classList.contains("bi-caret-down-fill")
+    ? id_down.classList.replace("bi-caret-down-fill", "bi-caret-down")
+    : "";
+  load_user(current_page, "asc");
+});
+
+id_down.addEventListener("click", () => {
+  id_down.classList.contains("bi-caret-down")
+    ? id_down.classList.replace("bi-caret-down", "bi-caret-down-fill")
+    : "";
+  id_up.classList.contains("bi-caret-up-fill")
+    ? id_up.classList.replace("bi-caret-up-fill", "bi-caret-up")
+    : "";
+  load_user(current_page, "dsc");
 });

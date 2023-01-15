@@ -11,6 +11,12 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+      integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
@@ -54,12 +60,64 @@
         </div>
       </nav>
       <!-- Page Navigation Bar End -->
+      <!-- page searchbar section  -->
+      <section class="row mt-3 justify-content-between p-2">
+        <div class="col-auto ml-2 d-flex align-items-center">
+          <div class="paginate_selectbox d-flex align-items-center">
+            <h6 class="pe-2">show</h6>
+            <select
+              class="paginate_select"
+              style="font-size: 13px"
+              aria-label="Default select example"
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
+            <h6 class="ps-2">Items</h6>
+          </div>
+        </div>
+        <div class="col-8 d-flex flex-lg-row justify-content-end">
+          <div class="col-auto me-5 invisible">
+            <button class="btn btn-outline-primary" id="back_main">back</button>
+          </div>
+          <div class="searchbar col-6">
+            <form class="d-flex">
+              <input
+                class="form-control me-2 error"
+                id="search_input"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                class="btn btn-outline-success"
+                id="search_submit"
+                type="button"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- page searchbar section end  -->
       <!-- user data table  -->
-      <div class="table-responsive table_div mt-3">
+      <div class="table-responsive table_div mt-2" id="table_div">
         <table class="table table-bordered">
           <thead class="thead-light text-center">
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col" class="d-flex align-items-center id_div">
+                <div class="mx-1">ID</div>
+                <div class="d-flex flex-column me-1">
+                  <span class="">
+                    <i id="id_up" class="bi bi-caret-up"></i>
+                  </span>
+                  <span class="icon_div">
+                    <i id="id_down" class="bi bi-caret-down"></i>
+                  </span>
+                </div>
+              </th>
               <th scope="col">Name</th>
               <th scope="col">Phone</th>
               <th scope="col">Email</th>
@@ -75,22 +133,8 @@
       </div>
       <!-- user data table end  -->
       <!-- pagination section start -->
-      <nav class="row mt-4 pagination_m_div">
-        <ul class="pagination justify-content-center" id="paginate_parent">
-          <!-- <li class="page-item disabled">
-            <button class="page-link">Previous</button>
-          </li>
-          <li class="page-item">
-            <button class="page-link">1</button>
-          </li>
-          <li class="page-item active">
-            <button class="page-link">2</button>
-          </li>
-          <li class="page-item"><button class="page-link">3</button></li>
-          <li class="page-item">
-            <button class="page-link">Next</button>
-          </li> -->
-        </ul>
+      <nav class="row mt-3 pagination_m_div">
+        <ul class="pagination justify-content-center" id="paginate_parent"></ul>
       </nav>
       <!-- pagination section end  -->
       <!-- Site footer -->
@@ -127,6 +171,9 @@
           </div>
           <div class="modal-body">
             <div class="card-body justify-content-center">
+              <div class="row text-center error_div invisible">
+                <p class="error_text">* Please Fill All Information. *</p>
+              </div>
               <div class="row">
                 <label for="name" class="col-2 col-form-label">Name</label>
                 <div class="col-md-10 col-sm-12">
@@ -311,19 +358,17 @@
                 </div>
               </div>
               <div class="row my-3">
-                <label for="edit_company" class="col-2 col-form-label"
+                <label for="select_company" class="col-2 col-form-label"
                   >Company</label
                 >
                 <div class="col-md-10 col-sm-12">
-                  <input
-                    type="text"
-                    name="edit_company"
-                    id="edit_company"
-                    class="form-control col-12"
-                    placeholder="Enter company Name"
-                    required
-                    autofocus
-                  />
+                  <select
+                    class="select_company form-select"
+                    id="select_company"
+                    aria-label="company section area "
+                  >
+                    <option selected disabled>Select Company Name</option>
+                  </select>
                 </div>
               </div>
               <div class="row my-3">
@@ -432,6 +477,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="module" src="./js/index.js" defer></script>
+    <script type="module" src="./js/index_main.js" defer></script>
   </body>
 </html>
