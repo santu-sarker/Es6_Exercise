@@ -3,12 +3,6 @@
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-
-  background-color: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0)
-  );
 }
 body {
   background-image: linear-gradient(
