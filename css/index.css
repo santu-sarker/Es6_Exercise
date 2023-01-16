@@ -30,6 +30,7 @@ body {
       rgba(214, 51, 32, 0.5),
       transparent 50%
     );
+  overflow-x: hidden;
 }
 .parent-div {
   min-height: 100vh;
@@ -67,7 +68,19 @@ body {
 
 .table_div {
   max-height: 55vh;
-  padding: 0 0.75rem;
+  z-index: 1;
+  background-color: rgb(252, 248, 248);
+  /* padding: 0 0.75rem; */
+}
+.table_head {
+  background-color: rgb(240 224 163 / 43%);
+}
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: rgb(254 254 222 / 50%);
+}
+.paginate_m_div {
+  margin-right: 0;
 }
 .pagination {
   margin-top: 80px;
@@ -79,6 +92,13 @@ body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   text-align: center;
-  background-color: rgb(17, 25, 44);
   color: #fff;
+  background: transparent;
+  box-shadow: 0 -0.5rem 1rem rgb(0 0 0 / 15%),
+    inset 0 1px 0 rgb(255 255 255 / 15%);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(113, 44, 249, 1),
+    rgba(113, 44, 249, 0.95)
+  );
 }

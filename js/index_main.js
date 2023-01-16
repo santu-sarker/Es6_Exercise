@@ -186,11 +186,17 @@ const load_user = (page = 1, order = "asc", filter_data = []) => {
       ? (user_data = user.slice(current_position, current_position + per_page))
       : (user_data = filter_data).slice();
   } else {
-    filter_data.length == 0
-      ? (user_data = user
-          .slice(current_position, current_position + per_page)
-          .reverse())
-      : (user_data = filter_data.slice());
+    // filter_data.length == 0
+    //   ? (user_data = user
+    //       .slice(current_position, current_position + per_page)
+    //       .reverse())
+    //   : (user_data = filter_data.slice());
+    if (filter_data.length == 0) {
+      let data = user.slice().reverse();
+      user_data = data.slice(current_position, current_position + per_page);
+    } else {
+      user_data = filter_data.slice();
+    }
   }
 
   // inserting rows one by one into table body
