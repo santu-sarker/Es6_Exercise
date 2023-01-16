@@ -67,6 +67,7 @@ body {
 
 .table_div {
   max-height: 55vh;
+  padding: 0 0.75rem;
 }
 .pagination {
   margin-top: 80px;
