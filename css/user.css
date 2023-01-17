@@ -30,12 +30,8 @@ body {
       rgba(214, 51, 32, 0.5),
       transparent 50%
     );
-  overflow-x: hidden;
 }
-.parent-div {
-  min-height: 100vh;
-  padding: 0;
-}
+
 .index-navbar {
   background: transparent;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%),
@@ -55,6 +51,42 @@ body {
 .nav-link:hover {
   color: #fff !important;
 }
+/* main div section  start */
+.parent-div {
+  padding: 0;
+  overflow-x: hidden;
+}
+.transform {
+  transform: rotate(90deg);
+  transition: transform 300ms ease-in-out;
+}
+.sidebar-div {
+  height: calc(100vh - 110px);
+  min-width: 15vw;
+  padding: 0 0.4rem;
+  margin-right: 0.8rem;
+  margin-top: 3px;
+  -webkit-box-shadow: 3px 0px 10px 0px rgba(191, 191, 181, 1);
+  -moz-box-shadow: 3px 0px 10px 0px rgba(191, 191, 181, 1);
+  box-shadow: 3px 0px 10px 0px rgba(191, 191, 181, 1);
+  background-color: #fff;
+}
+
+.list-unstyled > li > a {
+  margin: 0.2rem 2rem;
+  font-size: 15px;
+}
+.content-div {
+  height: calc(100vh - 110px);
+  margin-top: 3px;
+
+  background-color: #fff;
+  -webkit-box-shadow: -5px 2px 5px 0px rgba(135, 128, 135, 0.59);
+  -moz-box-shadow: -5px 2px 5px 0px rgba(135, 128, 135, 0.59);
+  box-shadow: -5px 2px 5px 0px rgba(135, 128, 135, 0.59);
+}
+
+/* main div section end */
 .paginate_selectbox h6 {
   margin-bottom: 0;
 }
@@ -65,12 +97,10 @@ body {
 .id_div {
   padding: 0 !important;
 }
-
 .table_div {
-  max-height: 55vh;
+  max-height: 61vh;
   z-index: 1;
   background-color: rgb(252, 248, 248);
-  /* padding: 0 0.75rem; */
 }
 .table_head {
   background-color: rgb(240 224 163 / 43%);
@@ -83,7 +113,7 @@ body {
   margin-right: 0;
 }
 .pagination {
-  margin-top: 80px;
+  margin-top: 20px;
 }
 
 .site-footer {
@@ -101,4 +131,42 @@ body {
     rgba(113, 44, 249, 1),
     rgba(113, 44, 249, 0.95)
   );
+}
+#offcanvas-body {
+  margin-right: 200px !important;
+}
+
+@media only screen and (max-width: 765px) {
+  .sidebar-div {
+    display: none;
+  }
+  .content-div {
+    width: 100%;
+    overflow-y: auto;
+    margin-right: 0.5rem;
+  }
+  .paginate_select {
+    font-size: 11px;
+  }
+  #lg_navbar_div {
+    display: none;
+  }
+  /* .offcanvas {
+    max-width: 280px;
+  } */
+}
+
+@media only screen and (max-width: 550px) {
+  .search_section {
+    display: block !important;
+  }
+  .searchbar_div {
+    margin-top: 1rem;
+  }
+  #search_input {
+    width: 60vw;
+  }
+  .offcanvas {
+    width: 280px !important;
+  }
 }

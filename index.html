@@ -17,131 +17,432 @@
       integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/user.css" />
   </head>
   <body>
     <!-- main div of the page  -->
-    <div class="container-fluid parent-div">
+    <div class="container-fluid parent-div d-flex flex-column">
       <!-- Page Navigation Bar  -->
       <nav
-        class="navbar bg-dark navbar-dark navbar-expand-sm sticky-top index-navbar container-fluid"
+        class="navbar bg-dark navbar-dark navbar-expand-md sticky-top index-navbar container-fluid"
       >
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Entertech Bd</a>
           <button
             class="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#indexBar"
-            aria-controls="indexBar"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebar_offcanvas"
+            aria-controls="offcanvasWithBackdrop"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+          <!-- large screen navbar div start  -->
+
+          <div class="navbar-nav text-center" id="lg_navbar_div">
+            <li class="nav-item index_username">
+              <a href="" class="nav-link"> User </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href=""
+                id="add_user"
+                data-bs-toggle="modal"
+                data-bs-target="#user_modal"
+                class="nav-link"
+                >Add user</a
+              >
+            </li>
+          </div>
+          <!-- large screen navbar div end  -->
           <div
-            class="collapse navbar-collapse justify-content-end"
-            id="indexBar"
+            class="offcanvas offcanvas-start navbar-collapse justify-content-end"
+            data-bs-scroll="true"
+            tabindex="-1"
+            id="sidebar_offcanvas"
+            aria-labelledby="sidebar_offcanvaslabel"
           >
-            <div class="navbar-nav text-center">
-              <li class="nav-item index_username">
-                <a href="" class="nav-link"> User </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  href=""
-                  id="add_user"
-                  data-bs-toggle="modal"
-                  data-bs-target="#user_modal"
-                  class="nav-link"
-                  >Add user</a
-                >
-              </li>
+            <div class="offcanvas-header container px-3" id="offcanvas-header">
+              <h5 class="offcanvas-title col-8" id="sidebar_offcanvaslabel">
+                Entertech BD
+              </h5>
+              <button
+                type="button"
+                class="btn-close text-reset"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body" id="offcanvas-body">
+              <ul class="list-unstyled ps-0">
+                <li class="mb-1 nav-item">
+                  <button
+                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#home-collapse"
+                    aria-expanded="true"
+                    id="collapse_home"
+                  >
+                    <span id="collapse_home_icon" class="me-2">
+                      <i class="bi bi-caret-right-fill"></i>
+                    </span>
+                    <h5>Home</h5>
+                  </button>
+                  <div class="collapse" id="home-collapse">
+                    <ul
+                      class="btn-toggle-nav list-unstyled fw-normal pb-1 small"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                        >
+                          User
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href=""
+                          id="add_user"
+                          data-bs-toggle="modal"
+                          data-bs-target="#user_modal"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Add user</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="mb-1">
+                  <button
+                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#dashboard-collapse"
+                    aria-expanded="false"
+                    id="collapse_dashboard"
+                  >
+                    <span id="collapse_dashboard_icon" class="me-2">
+                      <i class="bi bi-caret-right-fill"></i>
+                    </span>
+                    <h5>Dashboard</h5>
+                  </button>
+                  <div class="collapse" id="dashboard-collapse">
+                    <ul
+                      class="btn-toggle-nav list-unstyled fw-normal pb-1 small"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Overview</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Weekly</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Monthly</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Annually</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="mb-1">
+                  <button
+                    class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#orders-collapse"
+                    aria-expanded="false"
+                    id="collapse_order"
+                  >
+                    <span id="collapse_order_icon" class="me-2">
+                      <i class="bi bi-caret-right-fill"></i>
+                    </span>
+                    <h5>Order</h5>
+                  </button>
+                  <div class="collapse" id="orders-collapse">
+                    <ul
+                      class="btn-toggle-nav list-unstyled fw-normal pb-1 small"
+                    >
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >New</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Processed</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Shipped</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#"
+                          class="link-dark d-inline-flex text-decoration-none rounded"
+                          >Returned</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </nav>
+
       <!-- Page Navigation Bar End -->
-      <!-- page searchbar section  -->
-      <section class="row mt-3 justify-content-between p-2">
-        <div class="col-auto ml-2 d-flex align-items-center">
-          <div class="paginate_selectbox d-flex align-items-center">
-            <h6 class="pe-2">show</h6>
-            <select
-              class="paginate_select"
-              style="font-size: 13px"
-              aria-label="Default select example"
-            >
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-            </select>
-            <h6 class="ps-2">Items</h6>
-          </div>
-        </div>
-        <div class="col-8 d-flex flex-lg-row justify-content-end">
-          <div class="col-auto me-5 invisible">
-            <button class="btn btn-outline-primary" id="back_main">back</button>
-          </div>
-          <div class="searchbar col-6">
-            <form class="d-flex">
-              <input
-                class="form-control me-2 error"
-                id="search_input"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
+      <!-- main content section start  -->
+      <div class="content-main-div d-flex">
+        <!-- sidebar div section start  -->
+        <div class="sidebar-div pe-2 flex-wrap" id="sidebar_div">
+          <ul class="list-unstyled ps-0">
+            <li class="mb-1">
               <button
-                class="btn btn-outline-success"
-                id="search_submit"
-                type="button"
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#home-collapse"
+                aria-expanded="true"
+                id="collapse_home"
               >
-                Search
+                <span id="collapse_home_icon" class="me-2">
+                  <i class="bi bi-caret-right-fill"></i>
+                </span>
+                <h5>Home</h5>
               </button>
-            </form>
-          </div>
+              <div class="collapse" id="home-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                    >
+                      User
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href=""
+                      id="add_user"
+                      data-bs-toggle="modal"
+                      data-bs-target="#user_modal"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Add user</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#dashboard-collapse"
+                aria-expanded="false"
+                id="collapse_dashboard"
+              >
+                <span id="collapse_dashboard_icon" class="me-2">
+                  <i class="bi bi-caret-right-fill"></i>
+                </span>
+                <h5>Dashboard</h5>
+              </button>
+              <div class="collapse" id="dashboard-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Overview</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Weekly</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Monthly</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Annually</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#orders-collapse"
+                aria-expanded="false"
+                id="collapse_order"
+              >
+                <span id="collapse_order_icon" class="me-2">
+                  <i class="bi bi-caret-right-fill"></i>
+                </span>
+                <h5>Order</h5>
+              </button>
+              <div class="collapse" id="orders-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >New</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Processed</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Shipped</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="link-dark d-inline-flex text-decoration-none rounded"
+                      >Returned</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
-      </section>
-      <!-- page searchbar section end  -->
-      <!-- user data table  -->
-      <div class="table-responsive table_div mt-2" id="table_div">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-light text-center table_head">
-            <tr>
-              <th scope="col" class="d-flex align-items-center id_div">
-                <div class="mx-1">ID</div>
-                <div class="d-flex flex-column me-1">
-                  <span class="">
-                    <i id="id_up" class="bi bi-caret-up"></i>
-                  </span>
-                  <span class="icon_div">
-                    <i id="id_down" class="bi bi-caret-down"></i>
-                  </span>
-                </div>
-              </th>
-              <th scope="col">Name</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Email</th>
-              <th scope="col">Company</th>
-              <th scope="col">Address</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody class="text-center" id="table_body"></tbody>
-        </table>
+        <!-- sidebar div section end  -->
+
+        <!-- table div section start  -->
+        <div class="flex-grow-1 content-div flex-wrap">
+          <!-- page searchbar section  -->
+          <section
+            class="d-flex mt-3 justify-content-between p-2 search_section"
+          >
+            <div class="ml-2 d-flex align-items-center">
+              <div class="paginate_selectbox d-flex align-items-center">
+                <h6 class="pe-2">show</h6>
+                <select
+                  class="paginate_select form-select text-center"
+                  style="font-size: 13px"
+                  aria-label="Default select example"
+                >
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                </select>
+                <h6 class="ps-2">Items</h6>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end searchbar_div">
+              <div class="me-5 invisible">
+                <button class="btn btn-outline-primary" id="back_main">
+                  back
+                </button>
+              </div>
+              <div class="searchbar" id="searchbar">
+                <form class="d-flex">
+                  <input
+                    class="form-control me-2 error"
+                    id="search_input"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button
+                    class="btn btn-outline-success"
+                    id="search_submit"
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+          <!-- page searchbar section end  -->
+          <!-- user data table  -->
+          <div class="table-responsive table_div mt-2" id="table_div">
+            <table class="table table-bordered table-striped">
+              <thead class="thead-light text-center table_head">
+                <tr>
+                  <th scope="col" class="d-flex align-items-center id_div">
+                    <div class="mx-1">ID</div>
+                    <div class="d-flex flex-column me-1">
+                      <span class="">
+                        <i id="id_up" class="bi bi-caret-up"></i>
+                      </span>
+                      <span class="icon_div">
+                        <i id="id_down" class="bi bi-caret-down"></i>
+                      </span>
+                    </div>
+                  </th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Company</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody class="text-center" id="table_body"></tbody>
+            </table>
+          </div>
+          <!-- user data table end  -->
+          <!-- pagination section start -->
+          <nav class="row pagination_m_div g-0">
+            <ul
+              class="pagination justify-content-center g-0"
+              id="paginate_parent"
+            ></ul>
+          </nav>
+          <!-- pagination section end  -->
+        </div>
+        <!-- table div section end  -->
       </div>
-      <!-- user data table end  -->
-      <!-- pagination section start -->
-      <nav class="row pagination_m_div g-0">
-        <ul
-          class="pagination justify-content-center g-0"
-          id="paginate_parent"
-        ></ul>
-      </nav>
-      <!-- pagination section end  -->
+      <!-- main content section end -->
       <!-- Site footer -->
       <footer class="site-footer">
         <div class="row">

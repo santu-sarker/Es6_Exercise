@@ -457,6 +457,25 @@ add_user.addEventListener("click", () => {
   }
 });
 
+// sidebar click event start
+const home = document.getElementById("collapse_home");
+const dashboard = document.getElementById("collapse_dashboard");
+const sidebar_order = document.getElementById("collapse_order");
+
+home.addEventListener("click", () => {
+  const home_icon = document.getElementById("collapse_home_icon");
+  home_icon.classList.toggle("transform");
+});
+dashboard.addEventListener("click", () => {
+  const dashboard_icon = document.getElementById("collapse_dashboard_icon");
+  dashboard_icon.classList.toggle("transform");
+});
+sidebar_order.addEventListener("click", () => {
+  const order_icon = document.getElementById("collapse_order_icon");
+  order_icon.classList.toggle("transform");
+});
+// sidebar click event end
+
 // ************ all functions ***************
 //  ***************** table row creation function  ******************
 // table row creation function
