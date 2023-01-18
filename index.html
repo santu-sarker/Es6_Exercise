@@ -27,7 +27,12 @@
         class="navbar bg-dark navbar-dark navbar-expand-md sticky-top index-navbar container-fluid"
       >
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Entertech Bd</a>
+          <a class="navbar-brand company_logo" href="#"
+            ><img
+              class="img-fluid logo_img"
+              src="./logo/logo.png"
+              alt="Company Logo"
+          /></a>
           <button
             class="navbar-toggler"
             type="button"
@@ -55,6 +60,7 @@
             </li>
           </div>
           <!-- large screen navbar div end  -->
+          <!-- small screen navigation section start  -->
           <div
             class="offcanvas offcanvas-start navbar-collapse justify-content-end"
             data-bs-scroll="true"
@@ -63,9 +69,15 @@
             aria-labelledby="sidebar_offcanvaslabel"
           >
             <div class="offcanvas-header container px-3" id="offcanvas-header">
-              <h5 class="offcanvas-title col-8" id="sidebar_offcanvaslabel">
-                Entertech BD
-              </h5>
+              <a
+                class="offcanvas-title col-8 company_logo"
+                href="#"
+                id="sidebar_offcanvaslabel"
+                ><img
+                  class="img-fluid logo_img"
+                  src="./logo/logo.png"
+                  alt="Company Logo"
+              /></a>
               <button
                 type="button"
                 class="btn-close text-reset"
@@ -86,7 +98,7 @@
                     <span id="collapse_home_icon" class="me-2">
                       <i class="bi bi-caret-right-fill"></i>
                     </span>
-                    <h5>Home</h5>
+                    <h6>Home</h6>
                   </button>
                   <div class="collapse" id="home-collapse">
                     <ul
@@ -124,7 +136,7 @@
                     <span id="collapse_dashboard_icon" class="me-2">
                       <i class="bi bi-caret-right-fill"></i>
                     </span>
-                    <h5>Dashboard</h5>
+                    <h6>Dashboard</h6>
                   </button>
                   <div class="collapse" id="dashboard-collapse">
                     <ul
@@ -172,7 +184,7 @@
                     <span id="collapse_order_icon" class="me-2">
                       <i class="bi bi-caret-right-fill"></i>
                     </span>
-                    <h5>Order</h5>
+                    <h6>Order</h6>
                   </button>
                   <div class="collapse" id="orders-collapse">
                     <ul
@@ -212,6 +224,7 @@
               </ul>
             </div>
           </div>
+          <!-- small screen navigation section end  -->
         </div>
       </nav>
 
@@ -227,12 +240,12 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#home-collapse"
                 aria-expanded="true"
-                id="collapse_home"
+                id="sidebar_home"
               >
-                <span id="collapse_home_icon" class="me-2">
+                <span id="sidebar_home_icon" class="me-2">
                   <i class="bi bi-caret-right-fill"></i>
                 </span>
-                <h5>Home</h5>
+                <h6>Home</h6>
               </button>
               <div class="collapse" id="home-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -263,12 +276,12 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#dashboard-collapse"
                 aria-expanded="false"
-                id="collapse_dashboard"
+                id="sidebar_dashboard"
               >
-                <span id="collapse_dashboard_icon" class="me-2">
+                <span id="sidebar_dashboard_icon" class="me-2">
                   <i class="bi bi-caret-right-fill"></i>
                 </span>
-                <h5>Dashboard</h5>
+                <h6>Dashboard</h6>
               </button>
               <div class="collapse" id="dashboard-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -309,12 +322,12 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#orders-collapse"
                 aria-expanded="false"
-                id="collapse_order"
+                id="sidebar_order"
               >
-                <span id="collapse_order_icon" class="me-2">
+                <span id="sidebar_order_icon" class="me-2">
                   <i class="bi bi-caret-right-fill"></i>
                 </span>
-                <h5>Order</h5>
+                <h6>Order</h6>
               </button>
               <div class="collapse" id="orders-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">

@@ -5,31 +5,7 @@
   box-sizing: border-box;
 }
 body {
-  background-image: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.01),
-      rgba(255, 255, 255, 1) 85%
-    ),
-    radial-gradient(
-      ellipse at top left,
-      rgba(13, 110, 253, 0.5),
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at top right,
-      rgba(255, 228, 132, 0.5),
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at center right,
-      rgba(112, 44, 249, 0.5),
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at center left,
-      rgba(214, 51, 32, 0.5),
-      transparent 50%
-    );
+  background-color: rgba(245, 244, 230, 0.74);
 }
 
 .index-navbar {
@@ -43,6 +19,12 @@ body {
   );
   padding: 0.75rem 0;
 }
+.company_logo {
+  width: 90px;
+  height: 40px;
+  margin-left: 1rem;
+}
+
 .nav-link {
   text-align: center;
   color: rgb(230, 228, 228) !important;
@@ -64,26 +46,27 @@ body {
   height: calc(100vh - 110px);
   min-width: 15vw;
   padding: 0 0.4rem;
-  margin-right: 0.8rem;
+  padding-top: 1.2rem;
+  margin-right: 0.2rem;
   margin-top: 3px;
-  -webkit-box-shadow: 3px 0px 10px 0px rgba(191, 191, 181, 1);
-  -moz-box-shadow: 3px 0px 10px 0px rgba(191, 191, 181, 1);
-  box-shadow: 3px 0px 10px 0px rgba(191, 191, 181, 1);
+  box-shadow: 5px -1px 10px 0px rgba(218, 219, 213, 0.81);
+  -webkit-box-shadow: 5px -1px 10px 0px rgba(218, 219, 213, 0.81);
+  -moz-box-shadow: 5px -1px 10px 0px rgba(218, 219, 213, 0.81);
   background-color: #fff;
 }
 
 .list-unstyled > li > a {
   margin: 0.2rem 2rem;
-  font-size: 15px;
+  font-size: 13px;
 }
 .content-div {
   height: calc(100vh - 110px);
   margin-top: 3px;
 
   background-color: #fff;
-  -webkit-box-shadow: -5px 2px 5px 0px rgba(135, 128, 135, 0.59);
-  -moz-box-shadow: -5px 2px 5px 0px rgba(135, 128, 135, 0.59);
-  box-shadow: -5px 2px 5px 0px rgba(135, 128, 135, 0.59);
+  -webkit-box-shadow: -4px 2px 5px 0px rgba(135, 128, 135, 0.59);
+  -moz-box-shadow: -4px 2px 5px 0px rgba(135, 128, 135, 0.59);
+  box-shadow: -4px 2px 5px 0px rgba(135, 128, 135, 0.59);
 }
 
 /* main div section end */
@@ -101,6 +84,7 @@ body {
   max-height: 61vh;
   z-index: 1;
   background-color: rgb(252, 248, 248);
+  padding: 0 0.8rem;
 }
 .table_head {
   background-color: rgb(240 224 163 / 43%);
@@ -133,7 +117,7 @@ body {
   );
 }
 #offcanvas-body {
-  margin-right: 200px !important;
+  margin-right: 200px;
 }
 
 @media only screen and (max-width: 765px) {
@@ -167,6 +151,9 @@ body {
     width: 60vw;
   }
   .offcanvas {
-    width: 280px !important;
+    width: 240px !important;
+  }
+  .offcanvas-body {
+    margin-right: 100px !important;
   }
 }

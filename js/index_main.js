@@ -457,10 +457,10 @@ add_user.addEventListener("click", () => {
   }
 });
 
-// sidebar click event start
+// collapse menu click event start
 const home = document.getElementById("collapse_home");
 const dashboard = document.getElementById("collapse_dashboard");
-const sidebar_order = document.getElementById("collapse_order");
+const collapse_order = document.getElementById("collapse_order");
 
 home.addEventListener("click", () => {
   const home_icon = document.getElementById("collapse_home_icon");
@@ -470,11 +470,34 @@ dashboard.addEventListener("click", () => {
   const dashboard_icon = document.getElementById("collapse_dashboard_icon");
   dashboard_icon.classList.toggle("transform");
 });
-sidebar_order.addEventListener("click", () => {
+collapse_order.addEventListener("click", () => {
   const order_icon = document.getElementById("collapse_order_icon");
   order_icon.classList.toggle("transform");
 });
-// sidebar click event end
+
+// collapse menu click event end
+
+// sidebar menu click event start
+const sidebar_home = document.getElementById("sidebar_home");
+sidebar_home.addEventListener("click", () => {
+  const sidebar_home_icon = document.getElementById("sidebar_home_icon");
+  sidebar_home_icon.classList.toggle("transform");
+});
+
+const sidebar_dashboard = document.getElementById("sidebar_dashboard");
+sidebar_dashboard.addEventListener("click", () => {
+  const sidebar_dashboard_icon = document.getElementById(
+    "sidebar_dashboard_icon"
+  );
+  sidebar_dashboard_icon.classList.toggle("transform");
+});
+
+const sidebar_order = document.getElementById("sidebar_order");
+sidebar_order.addEventListener("click", () => {
+  const sidebar_order_icon = document.getElementById("sidebar_order_icon");
+  sidebar_order_icon.classList.toggle("transform");
+});
+// sidebar menu click event end
 
 // ************ all functions ***************
 //  ***************** table row creation function  ******************
